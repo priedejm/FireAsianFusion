@@ -1,0 +1,789 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;500;600;700&display=swap');
+@import "tailwindcss";
+@config "../tailwind.config.js";
+
+@utility scrollbar-hidden {
+  &::-webkit-scrollbar {
+    display: none;
+  }
+  -ms-overflow-style: none;
+  scrollbar-width: none;
+}
+
+body {
+  font-family: 'Poppins', sans-serif;
+  scroll-behavior: smooth;
+}
+
+.hero-gradient {
+  background: linear-gradient(rgba(0, 0, 0, 0.2), rgba(0, 0, 0, 0.2)), url('assets/hero.webp');
+  background-size: cover;
+  background-position: center;
+}
+
+.menu-item-hover {
+  transition: all 0.3s ease;
+}
+
+.menu-item-hover:hover {
+  transform: translateY(-5px);
+}
+
+.instagram-grid {
+  display: grid;
+  grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+  gap: 1rem;
+}
+
+@media (min-width: 768px) {
+  .instagram-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+@media (min-width: 1024px) {
+  .instagram-grid {
+    grid-template-columns: repeat(4, 1fr);
+  }
+}
+
+/* ===== PROFESSIONAL CSS ANIMATIONS ===== */
+
+/* ===== NAVBAR ANIMATIONS ===== */
+@keyframes slideDown {
+  from {
+    transform: translateY(-100px);
+    opacity: 0;
+  }
+  to {
+    transform: translateY(0);
+    opacity: 1;
+  }
+}
+
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(-20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes slideInFromLeft {
+  from {
+    opacity: 0;
+    transform: translateX(-50px);
+  }
+  to {
+    opacity: 1;
+    transform: translateX(0);
+  }
+}
+
+.navbar-slide-down {
+  animation: slideDown 0.8s cubic-bezier(0.6, 0.01, -0.05, 0.95);
+}
+
+.navbar-blur {
+  backdrop-filter: blur(20px);
+  transition: backdrop-filter 0.3s ease;
+}
+
+.navbar-item-fade-in {
+  animation: fadeInUp 0.6s cubic-bezier(0.6, 0.01, -0.05, 0.95) backwards;
+}
+
+.navbar-logo-rotate:hover {
+  animation: rotate360 0.6s ease-in-out;
+}
+
+.navbar-link-underline::after {
+  content: '';
+  position: absolute;
+  bottom: -2px;
+  left: 0;
+  width: 0;
+  height: 2px;
+  background: rgb(var(--primary));
+  transition: width 0.3s ease;
+}
+
+.navbar-link-underline:hover::after {
+  width: 100%;
+}
+
+.navbar-button-hover:hover {
+  transform: scale(1.05);
+  transition: transform 0.2s ease;
+}
+
+.navbar-menu-item-slide {
+  animation: slideInFromLeft 0.5s ease backwards;
+}
+
+/* ===== HERO ANIMATIONS ===== */
+@keyframes heroBackgroundShift {
+  0%, 100% {
+    background-position: 0% 50%;
+  }
+  50% {
+    background-position: 100% 50%;
+  }
+}
+
+@keyframes scaleIn {
+  from {
+    opacity: 0;
+    transform: scale(0.8);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+@keyframes fadeInDelay {
+  from {
+    opacity: 0;
+    transform: translateY(60px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes bounce {
+  0%, 100% {
+    transform: translateY(0);
+  }
+  50% {
+    transform: translateY(-12px);
+  }
+}
+
+@keyframes rotate360 {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+@keyframes starPop {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(-180deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes sparkleRotate {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.hero-bg-animation {
+  background: radial-gradient(circle at 20% 20%, rgba(255,107,53,0.1) 0%, transparent 50%);
+  animation: heroBackgroundShift 8s ease-in-out infinite alternate;
+}
+
+.hero-container-fade {
+  animation: fadeInDelay 1.2s cubic-bezier(0.6, 0.01, -0.05, 0.95) 0.5s backwards;
+}
+
+.hero-title-scale {
+  animation: scaleIn 1s cubic-bezier(0.6, 0.01, -0.05, 0.95) 0.5s backwards;
+}
+
+.hero-word-bounce:hover {
+  animation: bounce 0.6s ease;
+  transform-origin: center bottom;
+}
+
+.hero-word-1:hover {
+  transform: scale(1.05) rotate(-2deg);
+}
+
+.hero-word-2:hover {
+  transform: scale(1.05) rotate(2deg);
+}
+
+.hero-subtitle-fade {
+  animation: fadeInDelay 0.8s cubic-bezier(0.6, 0.01, -0.05, 0.95) 0.8s backwards;
+}
+
+.hero-sparkle-rotate {
+  animation: sparkleRotate 20s linear infinite;
+}
+
+.hero-text-fade {
+  animation: fadeInDelay 0.8s cubic-bezier(0.6, 0.01, -0.05, 0.95) 1.1s backwards;
+}
+
+.hero-buttons-fade {
+  animation: fadeInDelay 0.8s cubic-bezier(0.6, 0.01, -0.05, 0.95) 1.4s backwards;
+}
+
+.hero-button-hover:hover {
+  transform: scale(1.05) translateY(-2px);
+  transition: all 0.2s ease;
+}
+
+.hero-button-delay {
+  animation-delay: 1.6s;
+}
+
+.hero-rating-fade {
+  animation: fadeInDelay 0.8s cubic-bezier(0.6, 0.01, -0.05, 0.95) 1.7s backwards;
+}
+
+.hero-rating-hover:hover {
+  transform: scale(1.05);
+  background-color: rgba(0,0,0,0.3);
+  transition: all 0.2s ease;
+}
+
+.hero-star-pop {
+  animation: starPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) backwards;
+}
+
+.hero-scroll-fade {
+  animation: fadeInDelay 1s ease 3s backwards;
+}
+
+.hero-scroll-bounce {
+  animation: bounce 2s ease-in-out infinite;
+}
+
+.hero-scroll-hover:hover {
+  transform: scale(1.2);
+  transition: transform 0.2s ease;
+}
+
+/* ===== ABOUT ANIMATIONS ===== */
+@keyframes slideInFromBottom {
+  from {
+    opacity: 0;
+    transform: translateY(40px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes scaleInRotate {
+  from {
+    opacity: 0;
+    transform: scale(0.8) rotateY(-15deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotateY(0deg);
+  }
+}
+
+@keyframes floatSpin {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+.about-fade-in {
+  opacity: 0;
+  animation: slideInFromBottom 0.8s cubic-bezier(0.6, 0.01, -0.05, 0.95) forwards;
+}
+
+.about-title {
+  animation-delay: 0s;
+}
+
+.about-divider {
+  animation-delay: 0.2s;
+  transform: scaleX(0);
+  animation: scaleXIn 0.8s cubic-bezier(0.6, 0.01, -0.05, 0.95) 0.2s forwards;
+}
+
+.about-image-card {
+  animation: scaleInRotate 1s cubic-bezier(0.6, 0.01, -0.05, 0.95) 0.4s backwards;
+}
+
+.about-image-hover:hover {
+  transform: scale(1.05);
+  transition: transform 0.5s ease;
+}
+
+.about-text {
+  animation-delay: 0.6s;
+}
+
+.about-text-2 {
+  animation-delay: 0.8s;
+}
+
+.about-features {
+  animation-delay: 1s;
+}
+
+.about-feature-card:hover {
+  transform: scale(1.05) translateY(-5px);
+  box-shadow: 0 25px 50px -12px rgba(0, 0, 0, 0.25);
+  transition: all 0.3s ease;
+}
+
+.about-feature-icon:hover {
+  animation: rotate360 0.6s ease;
+}
+
+.about-bg-decoration {
+  animation: floatSpin 30s linear infinite;
+}
+
+@keyframes scaleXIn {
+  from {
+    transform: scaleX(0);
+  }
+  to {
+    transform: scaleX(1);
+  }
+}
+
+/* ===== MENU ANIMATIONS ===== */
+@keyframes menuItemFloat {
+  from {
+    opacity: 0;
+    transform: translateY(50px) scale(0.9);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) scale(1);
+  }
+}
+
+@keyframes wiggle {
+  0%, 100% { transform: rotate(0deg); }
+  25% { transform: rotate(10deg); }
+  75% { transform: rotate(-10deg); }
+}
+
+.menu-fade-in {
+  opacity: 0;
+  animation: slideInFromBottom 0.8s cubic-bezier(0.6, 0.01, -0.05, 0.95) forwards;
+}
+
+.menu-title { animation-delay: 0s; }
+.menu-divider { 
+  animation-delay: 0.2s;
+  transform: scaleX(0);
+  animation: scaleXIn 0.8s ease 0.2s forwards;
+}
+.menu-subtitle { animation-delay: 0.4s; }
+
+.menu-item {
+  opacity: 0;
+  animation: menuItemFloat 0.8s cubic-bezier(0.6, 0.01, -0.05, 0.95) forwards;
+}
+
+.menu-item:nth-child(1) { animation-delay: 0.6s; }
+.menu-item:nth-child(2) { animation-delay: 0.7s; }
+.menu-item:nth-child(3) { animation-delay: 0.8s; }
+.menu-item:nth-child(4) { animation-delay: 0.9s; }
+.menu-item:nth-child(5) { animation-delay: 1.0s; }
+.menu-item:nth-child(6) { animation-delay: 1.1s; }
+
+.menu-item:hover {
+  transform: translateY(-8px);
+  transition: transform 0.3s ease;
+}
+
+.menu-image:hover {
+  transform: scale(1.1);
+  transition: transform 0.6s ease;
+}
+
+.menu-heart {
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.menu-item:hover .menu-heart {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.menu-spicy-icon {
+  transition: transform 0.5s ease;
+}
+
+.menu-item:hover .menu-spicy-icon {
+  animation: wiggle 0.5s ease;
+}
+
+.menu-button {
+  opacity: 0;
+  animation: slideInFromBottom 0.8s ease 1.5s forwards;
+}
+
+.menu-bg-chef {
+  animation: rotate360 25s linear infinite reverse;
+}
+
+.menu-bg-utensils {
+  animation: floatScale 20s ease-in-out infinite;
+}
+
+@keyframes floatScale {
+  0%, 100% {
+    transform: rotate(0deg) scale(1);
+  }
+  50% {
+    transform: rotate(180deg) scale(1.1);
+  }
+}
+
+/* ===== REVIEWS ANIMATIONS ===== */
+@keyframes reviewCardSlide {
+  from {
+    opacity: 0;
+    transform: translateY(50px) rotateY(-15deg);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0) rotateY(0deg);
+  }
+}
+
+.reviews-fade-in {
+  opacity: 0;
+  animation: slideInFromBottom 0.8s cubic-bezier(0.6, 0.01, -0.05, 0.95) forwards;
+}
+
+.reviews-title { animation-delay: 0s; }
+.reviews-divider { 
+  animation-delay: 0.2s;
+  transform: scaleX(0);
+  animation: scaleXIn 0.8s ease 0.2s forwards;
+}
+.reviews-rating { animation-delay: 0.4s; }
+.reviews-subtitle { animation-delay: 0.8s; }
+
+.reviews-star {
+  opacity: 0;
+  animation: starPop 0.6s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.reviews-star:nth-child(1) { animation-delay: 0.6s; }
+.reviews-star:nth-child(2) { animation-delay: 0.7s; }
+.reviews-star:nth-child(3) { animation-delay: 0.8s; }
+.reviews-star:nth-child(4) { animation-delay: 0.9s; }
+.reviews-star:nth-child(5) { animation-delay: 1.0s; }
+
+.reviews-rating-number {
+  opacity: 0;
+  animation: starPop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) 1.1s forwards;
+}
+
+.review-card {
+  opacity: 0;
+  animation: reviewCardSlide 0.8s cubic-bezier(0.6, 0.01, -0.05, 0.95) forwards;
+}
+
+.review-card:nth-child(1) { animation-delay: 1.0s; }
+.review-card:nth-child(2) { animation-delay: 1.2s; }
+.review-card:nth-child(3) { animation-delay: 1.4s; }
+.review-card:nth-child(4) { animation-delay: 1.6s; }
+
+.review-card:hover {
+  transform: translateY(-5px);
+  transition: transform 0.3s ease;
+}
+
+.review-avatar:hover {
+  transform: scale(1.1) rotate(5deg);
+  transition: transform 0.3s ease;
+}
+
+.review-quote {
+  opacity: 0.1;
+  transition: opacity 0.3s ease, transform 0.3s ease;
+}
+
+.review-card:hover .review-quote {
+  opacity: 0.3;
+  transform: scale(1.2);
+}
+
+.reviews-link {
+  opacity: 0;
+  animation: slideInFromBottom 0.8s ease 1.8s forwards;
+}
+
+.reviews-bg-star {
+  animation: floatScale 15s ease-in-out infinite;
+}
+
+/* ===== INSTAGRAM ANIMATIONS ===== */
+@keyframes instagramSlide {
+  from {
+    opacity: 0;
+    transform: scale(0.8) rotateY(-20deg);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1) rotateY(0deg);
+  }
+}
+
+.instagram-fade-in {
+  opacity: 0;
+  animation: slideInFromBottom 0.8s ease forwards;
+}
+
+.instagram-title { animation-delay: 0s; }
+.instagram-divider {
+  animation-delay: 0.2s;
+  transform: scaleX(0);
+  animation: scaleXIn 0.8s ease 0.2s forwards;
+}
+.instagram-subtitle { animation-delay: 0.4s; }
+
+.instagram-post {
+  opacity: 0;
+  animation: instagramSlide 0.6s cubic-bezier(0.6, 0.01, -0.05, 0.95) forwards;
+}
+
+.instagram-post:nth-child(1) { animation-delay: 0.6s; }
+.instagram-post:nth-child(2) { animation-delay: 0.68s; }
+.instagram-post:nth-child(3) { animation-delay: 0.76s; }
+.instagram-post:nth-child(4) { animation-delay: 0.84s; }
+.instagram-post:nth-child(5) { animation-delay: 0.92s; }
+.instagram-post:nth-child(6) { animation-delay: 1.0s; }
+.instagram-post:nth-child(7) { animation-delay: 1.08s; }
+.instagram-post:nth-child(8) { animation-delay: 1.16s; }
+
+.instagram-post:hover {
+  transform: translateY(-8px);
+  transition: transform 0.3s ease;
+}
+
+.instagram-image:hover {
+  transform: scale(1.1);
+  transition: transform 0.6s ease;
+}
+
+.instagram-overlay {
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.instagram-post:hover .instagram-overlay {
+  opacity: 1;
+}
+
+.instagram-stats {
+  transform: scale(0);
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.instagram-post:hover .instagram-stats {
+  transform: scale(1);
+}
+
+.instagram-stat:hover {
+  transform: scale(1.1);
+  background-color: rgba(255,255,255,0.3);
+  transition: all 0.2s ease;
+}
+
+.instagram-icon {
+  opacity: 0;
+  transform: scale(0);
+  transition: all 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.instagram-post:hover .instagram-icon {
+  opacity: 0.8;
+  transform: scale(1);
+}
+
+.instagram-button {
+  opacity: 0;
+  animation: slideInFromBottom 0.8s ease 1.5s forwards;
+}
+
+.instagram-button:hover {
+  transform: scale(1.05) translateY(-2px);
+  transition: transform 0.2s ease;
+}
+
+.instagram-logo-spin:hover {
+  animation: rotate360 0.6s ease;
+}
+
+.instagram-bg-camera {
+  animation: floatScale 20s linear infinite;
+}
+
+/* ===== FOOTER ANIMATIONS ===== */
+.footer-fade-in {
+  opacity: 0;
+  animation: slideInFromBottom 0.6s cubic-bezier(0.6, 0.01, -0.05, 0.95) forwards;
+}
+
+.footer-section:nth-child(1) { animation-delay: 0.1s; }
+.footer-section:nth-child(2) { animation-delay: 0.2s; }
+.footer-section:nth-child(3) { animation-delay: 0.3s; }
+.footer-section:nth-child(4) { animation-delay: 0.4s; }
+
+.footer-logo:hover {
+  transform: scale(1.02);
+  transition: transform 0.2s ease;
+}
+
+.footer-logo-icon:hover {
+  animation: rotate360 0.6s ease;
+  transform: scale(1.1);
+}
+
+.footer-social {
+  opacity: 0;
+  animation: starPop 0.5s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.footer-social:nth-child(1) { animation-delay: 0.6s; }
+.footer-social:nth-child(2) { animation-delay: 0.7s; }
+.footer-social:nth-child(3) { animation-delay: 0.8s; }
+.footer-social:nth-child(4) { animation-delay: 0.9s; }
+
+.footer-social:hover {
+  transform: scale(1.2) translateY(-3px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.25);
+  transition: all 0.2s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+}
+
+.footer-link:hover {
+  transform: translateX(5px);
+  transition: transform 0.2s ease;
+}
+
+.footer-contact:hover {
+  transform: translateX(3px);
+  transition: transform 0.2s ease;
+}
+
+.footer-platform {
+  opacity: 0;
+  animation: starPop 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55) forwards;
+}
+
+.footer-platform:nth-child(1) { animation-delay: 1.0s; }
+.footer-platform:nth-child(2) { animation-delay: 1.1s; }
+.footer-platform:nth-child(3) { animation-delay: 1.2s; }
+
+.footer-platform:hover {
+  transform: scale(1.05) translateY(-1px);
+  transition: transform 0.2s ease;
+}
+
+.footer-divider {
+  opacity: 0;
+  transform: scaleX(0);
+  animation: scaleXIn 0.8s ease 1.2s forwards, fadeInDelay 0.8s ease 1.2s forwards;
+}
+
+.footer-copyright {
+  opacity: 0;
+  animation: slideInFromBottom 0.8s ease 1.5s forwards;
+}
+
+.footer-bg-flame {
+  animation: rotate360 50s linear infinite;
+}
+
+/* ===== UTILITY ANIMATIONS ===== */
+@keyframes pulse {
+  0%, 100% {
+    transform: scale(1);
+  }
+  50% {
+    transform: scale(1.05);
+  }
+}
+
+@keyframes glow {
+  0%, 100% {
+    box-shadow: 0 0 20px rgba(var(--primary), 0.3);
+  }
+  50% {
+    box-shadow: 0 0 30px rgba(var(--primary), 0.6);
+  }
+}
+
+.animate-pulse-hover:hover {
+  animation: pulse 1s ease-in-out;
+}
+
+.animate-glow:hover {
+  animation: glow 2s ease-in-out infinite;
+}
+
+/* ===== INTERSECTION OBSERVER TRIGGERS ===== */
+.fade-in-up {
+  opacity: 0;
+  transform: translateY(30px);
+  transition: all 0.8s cubic-bezier(0.6, 0.01, -0.05, 0.95);
+}
+
+.fade-in-up.visible {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+.scale-in {
+  opacity: 0;
+  transform: scale(0.9);
+  transition: all 0.6s cubic-bezier(0.6, 0.01, -0.05, 0.95);
+}
+
+.scale-in.visible {
+  opacity: 1;
+  transform: scale(1);
+}
+
+.slide-in-left {
+  opacity: 0;
+  transform: translateX(-30px);
+  transition: all 0.6s ease;
+}
+
+.slide-in-left.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
+
+.slide-in-right {
+  opacity: 0;
+  transform: translateX(30px);
+  transition: all 0.6s ease;
+}
+
+.slide-in-right.visible {
+  opacity: 1;
+  transform: translateX(0);
+}
